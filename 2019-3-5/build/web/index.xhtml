@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Unit02:表單資料提交</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputLabel value="姓名" />
+            <h:inputText value="#{customer.name}"/> <br/>
+
+            <h:outputLabel value="性別" />
+            <h:selectOneRadio value="#{customer.gender}">   
+                <f:selectItem itemLabel="男" itemValue="F" />
+                <f:selectItem itemLabel="女" itemValue="M" />
+            </h:selectOneRadio> <br/>
+
+            <h:commandButton action="#{customer.handleAction()}" type="submit" value="Submit" />
+            <h:commandButton action="index" type="reset" value="Reset" />
+        </h:form>
+    </h:body>
+</html>
+
