@@ -7,7 +7,11 @@
         <title>Display Car Info</title>
     </h:head>
     <h:body>
-       <h:link outcome="index" > Home </h:link>
+        <h2>車子名稱： #{carSelectionBean.car.name}</h2>
+        <h2>車子製造商： #{carSelectionBean.car.manufacturer}</h2>
+        <h2>車子圖片：</h2>
+        <h:graphicImage library="img" name="#{carSelectionBean.car.img_uri}"></h:graphicImage><br/>
+        <h2><h:link outcome="index" > Home </h:link></h2>
     </h:body>
 </html>
 

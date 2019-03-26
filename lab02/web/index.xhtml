@@ -7,16 +7,16 @@
         <title>Unit 04 Assignment</title>
     </h:head>
     <h:body>
-        <p>Select a car ： </p>
+        <h2>Select a car ：</h2>
         <h:form>
-            <h:selectOneMenu value="#{CarSelectionBean.selectedCarID}">
-                <f:selectItems value="#{CarSelectionBean.getCars()}"
+            <h:selectOneMenu value="#{carSelectionBean.selectedCarID}">
+                <f:selectItems value="#{carSelectionBean.cars}"
                     var="car"
-                    itemLabel="#{car.name.concat(' ').concat(car.Manufacturer)}"
+                    itemLabel="#{car.name.concat(' ').concat(car.manufacturer)}"
                     itemValue="#{car.id}" 
-                    noSelectionValue="#{CarSelectionBean.getCars[0]}"
+                    noSelectionValue="#{carSelectionBean.cars[0]}"
                 />
-            </h:selectOneMenu> <br/>
+            </h:selectOneMenu> <br/><br/>
             <h:commandButton action="#{carSelectionBean.dispalyInfo()}" type="submit" value="Display" />
         </h:form>
     </h:body>

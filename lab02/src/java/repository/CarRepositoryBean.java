@@ -37,19 +37,19 @@ public class CarRepositoryBean {
     public void init(){
         // Your code to create a car and put into the repository
         Car newCar = new Car();
-        newCar.setName("IXL");
+        newCar.setName("ILX");
         newCar.setManufacturer("Acura");
-        newCar.setImg_uri("IXL.PNG");
+        newCar.setImg_uri("ILX.PNG");
         this.create(newCar);
         Car newCar2 = new Car();
-        newCar2.setName("RXL");
+        newCar2.setName("RLX");
         newCar2.setManufacturer("Acura");
-        newCar2.setImg_uri("RXL.PNG");
+        newCar2.setImg_uri("RLX.PNG");
         this.create(newCar2);
         Car newCar3 = new Car();
-        newCar2.setName("RDX");
-        newCar2.setManufacturer("Acura");
-        newCar2.setImg_uri("RDX.PNG");
+        newCar3.setName("RDX");
+        newCar3.setManufacturer("Acura");
+        newCar3.setImg_uri("RDX.PNG");
         this.create(newCar3);
     }
     
