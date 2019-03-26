@@ -10,11 +10,11 @@
         <p>Select a car ： </p>
         <h:form>
             <h:selectOneMenu value="#{CarSelectionBean.selectedCarID}">
-                <f:selectItems value="#{CarSelectionBean.cars}"
+                <f:selectItems value="#{CarSelectionBean.getCars()}"
                     var="car"
                     itemLabel="#{car.name.concat(' ').concat(car.Manufacturer)}"
                     itemValue="#{car.id}" 
-                    noSelectionValue="#{CarSelectionBean.cars[0]}"
+                    noSelectionValue="#{CarSelectionBean.getCars[0]}"
                 />
             </h:selectOneMenu> <br/>
             <h:commandButton action="#{carSelectionBean.dispalyInfo()}" type="submit" value="Display" />

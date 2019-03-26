@@ -6,9 +6,11 @@
 package uibeans;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import repository.Car;
 import repository.CarRepositoryBean;
 
 /**
@@ -44,6 +46,9 @@ public class CarSelectionBean implements Serializable{
         this.selectedCarID = selectedCarID;
     }
 
+    public List<Car> getCars(){
+        return repository.findAll();
+    }
     /**
      * Action method to redirect to displayInfo facelets page.
      * @return target page name
