@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>EA Midterm </title>
+        <f:metadata>
+            <f:viewParam name="carID" value="#{carSelectionBean.selectedCarID}"></f:viewParam>
+            <f:viewParam name="price" value="#{carSelectionBean.price}"></f:viewParam>
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <h1>List of cars in the repository</h1>
+        <table>
+            <tr>
+                <td>Car ID</td>
+                <td>Car Name</td>
+                <td>Car Price</td>
+            </tr>
+            <tr>
+                <td>#{carSelectionBean.cars[0].id}</td>
+                <td>
+                    <h:link outcome="editCarInfo" value="#{carSelectionBean.cars[0].name}">
+                    <f:param name="carID" value="#{carSelectionBean.cars[0].id}" />
+                    <f:param name="price" value="#{carSelectionBean.cars[0].price}" /></h:link>
+                </td>
+                <td>#{carSelectionBean.cars[0].price}</td>
+            </tr>
+            <tr>
+                <td>#{carSelectionBean.cars[1].id}</td>
+                <td>
+                    <h:link outcome="editCarInfo" value="#{carSelectionBean.cars[1].name}">
+                    <f:param name="carID" value="#{carSelectionBean.cars[1].id}" />
+                    <f:param name="price" value="#{carSelectionBean.cars[1].price}" /></h:link>
+                </td>
+                <td>#{carSelectionBean.cars[1].price}</td>
+            </tr>
+            <tr>
+                <td>#{carSelectionBean.cars[2].id}</td>
+                <td>
+                    <h:link outcome="editCarInfo" value="#{carSelectionBean.cars[2].name}">
+                    <f:param name="carID" value="#{carSelectionBean.cars[2].id}" />
+                    <f:param name="price" value="#{carSelectionBean.cars[2].price}" /></h:link>
+                </td>
+                <td>#{carSelectionBean.cars[2].price}</td>
+            </tr>
+        </table>
+
+    </h:body>
+</html>
+

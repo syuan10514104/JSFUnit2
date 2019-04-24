@@ -10,7 +10,7 @@
         </f:metadata>
     </h:head>
     <h:body>
-        <p><h:link outcome="index" value="Item1">
+        <p><h:link outcome="page1" value="Item1">
             <f:param name="itemID" value="Item1" />
         </h:link></p>
         <p><h:link outcome="index" value="Item2">
@@ -20,7 +20,7 @@
             <f:param name="itemID" value="Item3" />
         </h:link></p>
         <h:form>
-            <p><h:commandButton action="#{itemidBean.showInfo}" value="Show info" /></p>
+            <p><h:commandButton action="#{itemidBean.showInfo}" value="Show Info" /></p>
         </h:form>
         <h:graphicImage library="img"  name="#{itemidBean.itemid}.jpg"></h:graphicImage>
     </h:body>

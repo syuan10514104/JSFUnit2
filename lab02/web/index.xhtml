@@ -8,6 +8,7 @@
     </h:head>
     <h:body>
         <h2>Select a car ：</h2>
+        <p>#{carSelectionBean.cars[1].name}</p>
         <h:form>
             <h:selectOneMenu value="#{carSelectionBean.selectedCarID}">
                 <f:selectItems value="#{carSelectionBean.cars}"
