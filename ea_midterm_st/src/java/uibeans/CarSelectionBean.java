@@ -27,7 +27,7 @@ public class CarSelectionBean implements Serializable{
     @EJB CarRepositoryBean repository;
    
     private Integer selectedCarID;
-    private Float price;
+    private Car car;
 
     /**
      * Get the value of selectedCarID
@@ -38,9 +38,7 @@ public class CarSelectionBean implements Serializable{
         return selectedCarID;
     }
 
-    public Float getPrice() {
-        return price;
-    }
+
     /**
      * Set the value of selectedCarID
      *
@@ -50,9 +48,7 @@ public class CarSelectionBean implements Serializable{
         this.selectedCarID = selectedCarID;
     }
     
-    public void setPrice(Float price) {
-        this.price = price;
-    }
+
 
     public List<Car> getCars(){
         return repository.findAll();
@@ -62,11 +58,12 @@ public class CarSelectionBean implements Serializable{
      * @return target page name
      */
     public Car getCar() {
-        return repository.query(selectedCarID);
+        car = repository.query(selectedCarID);
+        return car;
     }
     
-    public String setPrice(){
-        repository.setPrice(selectedCarID, price);
+    public String update(){
+        repository.update(selectedCarID, car);
         return "home";
     }
     

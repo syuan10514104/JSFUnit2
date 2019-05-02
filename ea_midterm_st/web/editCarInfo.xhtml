@@ -8,7 +8,6 @@
         <title>Edit Car Info</title>
         <f:metadata>
             <f:viewParam name="carID" value="#{carSelectionBean.selectedCarID}"></f:viewParam>
-            <f:viewParam name="price" value="#{carSelectionBean.price}"></f:viewParam>
         </f:metadata>
     </h:head>
     <h:body>
@@ -25,11 +24,11 @@
             </tr>
             <tr>
                 <td>Price</td>
-                <td><h:inputText value="#{carSelectionBean.price}" ></h:inputText></td>
+                <td><h:inputText value="#{carSelectionBean.car.price}" ></h:inputText></td>
             </tr>
         </table>
             <p><h:commandButton action="#{carSelectionBean.home}" value="cancel" />
-            <h:commandButton action="#{carSelectionBean.setPrice}" value="submit" /></p>
+            <h:commandButton action="#{carSelectionBean.update}" value="submit" /></p>
         </h:form>
         
         <h:graphicImage value="#{carSelectionBean.car.img_uri}"></h:graphicImage>
