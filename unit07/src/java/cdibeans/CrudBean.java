@@ -43,7 +43,8 @@ public class CrudBean implements Serializable {
     }
     
     public Item getItem() {
-        return itemFacade.find(selectedItemID);
+        this.item = itemFacade.find(selectedItemID);
+        return item;
     }
 
     public void setItem(Item item) {
@@ -65,6 +66,8 @@ public class CrudBean implements Serializable {
 
     
     public String update(){
+        System.out.println(item.getImage());
+        System.out.println(item.getDescription());
         itemFacade.edit(item);
         return "itemList";
     }
