@@ -25,6 +25,17 @@ public class Shipment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @ManyToMany(mappedBy = "shipments")
+    private Collection<Invoice> invoices;
+
+    public Collection<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(Collection<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+    
 
     public Long getId() {
         return id;

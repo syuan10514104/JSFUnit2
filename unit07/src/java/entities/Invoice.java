@@ -6,14 +6,16 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
- * @author 蘿莉控
+ * @author syuan
  */
 @Entity
 public class Invoice implements Serializable {
@@ -22,6 +24,17 @@ public class Invoice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @ManyToMany
+    private Collection<Shipment> shipments;
+
+    public Collection<Shipment> getShipments() {
+        return shipments;
+    }
+
+    public void setShipments(Collection<Shipment> shipments) {
+        this.shipments = shipments;
+    }
 
     public Long getId() {
         return id;
