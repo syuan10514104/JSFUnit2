@@ -42,13 +42,20 @@ public class CrudBean implements Serializable {
         this.newItem = newItem;
     }
     
+    public String findItemToEdit(){
+        System.out.println("findItemToEdit()");
+        this.item = itemFacade.find(this.selectedItemID);
+        return null;
+    }
+    
     public Item getItem() {
-        this.item = itemFacade.find(selectedItemID);
+//        this.item = itemFacade.find(selectedItemID);
         return item;
     }
 
     public void setItem(Item item) {
         this.item = item;
+        System.out.println(String.format("setItem(), %s, %s", this.item.getImage(), this.item.getDescription()));
     }
     
     public Long getSelectedItemID() {
