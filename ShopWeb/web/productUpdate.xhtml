@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>修改產品</title>
+        <f:metadata>
+            <f:viewParam name="productID" value="#{crudBean.selectedProductID}"></f:viewParam>
+            <f:viewAction action="#{crudBean.findProduct()}"></f:viewAction>
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p>產品名稱: <h:inputText value="#{crudBean.product.name}"/></p>
+            <p>價格: <h:inputText value="#{crudBean.product.price}"/></p>
+            <p>標題: <h:inputText value="#{crudBean.product.title}"/></p>
+            <p>簡介: <h:inputTextarea value="#{crudBean.product.introduction}"/></p>
+            <p>色澤: <h:inputText value="#{crudBean.product.colour}"/></p>
+            <p>嗅覺: <h:inputText value="#{crudBean.product.nose}"/></p>
+            <p>口感: <h:inputText value="#{crudBean.product.taste}"/></p>
+            <p>餘韻: <h:inputText value="#{crudBean.product.finsh}"/></p>
+            <p>橡木桶: <h:inputTextarea value="#{crudBean.product.cask}"/></p>
+            <p>
+                <h:commandButton value="返回" action="productPage"/>
+                <h:commandButton value="修改" action="#{crudBean.update}" />
+                <h:commandButton value="刪除" action="#{crudBean.delete}" />
+            </p>
+        </h:form>
+    </h:body>
+</html>
+
