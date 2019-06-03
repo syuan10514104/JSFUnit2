@@ -20,6 +20,10 @@
         <p>餘韻:#{crudBean.product.finsh}</p>
         <p>橡木桶:#{crudBean.product.cask}</p>
         <p>價格:#{crudBean.product.price}</p>
+        <h:form>
+            <p>購買數量：<h:inputText value="#{crudBean.quantity}"/></p>
+            <h:commandButton value="確認" action="#{crudBean.addItem()}" />
+        </h:form>
         <h:link outcome="index" value="回首頁"></h:link>
     </h:body>
 </html>

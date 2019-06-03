@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>購物車</title>
     </h:head>
@@ -9,6 +10,17 @@
         <h1>購物車</h1>
         <h:link outcome="checkout" value="結帳"></h:link><br/><br/>
         <h:link outcome="index" value="回首頁"></h:link>
+        
+        <h:dataTable value="#{crudBean.findAllItem()}" var="item">
+            <h:column>
+                <f:facet name="header">品項</f:facet>
+                #{item.product.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">數量</f:facet>
+                #{item.quantity}
+            </h:column>
+        </h:dataTable>
     </h:body>
 </html>
 
