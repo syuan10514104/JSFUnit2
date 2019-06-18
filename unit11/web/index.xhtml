@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                Address:<h:inputText value="#{addressBean.address}"></h:inputText>
+                Zip:<h:inputText value="#{addressBean.zipCode}" required="false"></h:inputText>
+                <h:commandButton value="OK"
+                                 action="#{addressBean.actionMethod()}">
+                    <f:actionListener type="cdiBeans.addressBean"/>
+                </h:commandButton>
+                <h:commandButton value="Back"
+                                 immediate="true"
+                                 action="#{addressBean.back()}" />
+            </h:panelGrid>
+        </h:form>
+        <h:messages />
+    </h:body>
+</html>
+
