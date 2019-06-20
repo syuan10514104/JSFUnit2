@@ -8,21 +8,16 @@
         <f:metadata>
             <f:viewParam name="productID" value="#{crudBean.selectedProductID}"></f:viewParam>
             <f:viewAction action="#{crudBean.findProduct()}"></f:viewAction>
+            <f:viewAction action="#{crudItemBean.createItem()}"></f:viewAction>
         </f:metadata>
     </h:head>
     <h:body>
         <h1>#{crudBean.product.name}</h1>
-        <p>標題:#{crudBean.product.title}</p>
-        <p>簡介:#{crudBean.product.introduction}</p>
-        <p>色澤:#{crudBean.product.colour}</p>
-        <p>嗅覺:#{crudBean.product.nose}</p>
-        <p>口感:#{crudBean.product.taste}</p>
-        <p>餘韻:#{crudBean.product.finsh}</p>
-        <p>橡木桶:#{crudBean.product.cask}</p>
         <p>價格:#{crudBean.product.price}</p>
+        <p>圖片:#{crudBean.product.img}</p>
         <h:form>
-            <p>購買數量：<h:inputText value="#{crudBean.quantity}"/></p>
-            <h:commandButton value="確認" action="#{crudBean.addItem()}" />
+            <p>購買數量：<h:inputText value="#{crudItemBean.newItem.quantity}"/></p>
+            <h:commandButton value="確認" action="#{crudItemBean.addItem()}" />
         </h:form>
         <h:link outcome="index" value="回首頁"></h:link>
     </h:body>

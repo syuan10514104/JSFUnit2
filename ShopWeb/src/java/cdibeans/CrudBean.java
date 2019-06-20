@@ -5,9 +5,7 @@
  */
 package cdibeans;
 
-import entities.Item;
 import entities.Product;
-import entityControl.ItemFacade;
 import entityControl.ProductFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -25,46 +23,21 @@ public class CrudBean implements Serializable {
     
     @EJB
     private ProductFacade productFacade;
-    private ItemFacade itemFacade;
     
     private Product newProduct;
     private Long selectedProductID;
     private Product product;
-    private int quantity;
-    private Item item;
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
+    
     public ProductFacade getProductFacade() {
         return productFacade;
     }
 
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
+    
     public void setProductFacade(ProductFacade productFacade) {
         this.productFacade = productFacade;
     }
     
-    public ItemFacade getItemFacade() {
-        return itemFacade;
-    }
-
-    public void setItemFacade(ItemFacade itemFacade) {
-        this.itemFacade = itemFacade;
-    }
-
     public Long getSelectedProductID() {
         return selectedProductID;
     }
@@ -122,15 +95,4 @@ public class CrudBean implements Serializable {
         return "index";
     }
     
-    public String addItem(){
-        this.item = new Item();
-        item.setProduct(product);
-        item.setQuantity(quantity);
-        itemFacade.create(item);
-        return "index";
-    }
-    
-    public List<Item> findAllItem(){
-        return itemFacade.findAll();
-    }
 }

@@ -14,13 +14,7 @@
         <h:form>
             <p>產品名稱: <h:inputText value="#{crudBean.product.name}"/></p>
             <p>價格: <h:inputText value="#{crudBean.product.price}"/></p>
-            <p>標題: <h:inputText value="#{crudBean.product.title}"/></p>
-            <p>簡介: <h:inputTextarea value="#{crudBean.product.introduction}"/></p>
-            <p>色澤: <h:inputText value="#{crudBean.product.colour}"/></p>
-            <p>嗅覺: <h:inputText value="#{crudBean.product.nose}"/></p>
-            <p>口感: <h:inputText value="#{crudBean.product.taste}"/></p>
-            <p>餘韻: <h:inputText value="#{crudBean.product.finsh}"/></p>
-            <p>橡木桶: <h:inputTextarea value="#{crudBean.product.cask}"/></p>
+            <p>圖片: <h:inputText value="#{crudBean.product.img}"/></p>
             <p>
                 <h:commandButton value="返回" action="productPage"/>
                 <h:commandButton value="確認" action="#{crudBean.update}" />

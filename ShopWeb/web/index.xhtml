@@ -27,8 +27,16 @@
                     <f:param name="productID" value="#{product.id}" /></h:link>
             </h:column>
         </h:dataTable>
-        #{crudBean.item.product.name}
-        #{crudBean.item.quantity}
+        <h:dataTable value="#{crudItemBean.findAllItem}" var="item">
+            <h:column>
+                <f:facet name="header">品項</f:facet>
+                #{item.product.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">數量</f:facet>
+                #{item.quantity}
+            </h:column>
+        </h:dataTable>
     </h:body>
 </html>
 

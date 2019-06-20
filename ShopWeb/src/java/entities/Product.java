@@ -24,15 +24,7 @@ public class Product implements Serializable {
     private Long id;
     private String name;
     private Integer  price;
-    private String title;
-    private String introduction;
-    private String colour;
-
-    
-    private String nose;
-    private String taste;
-    private String finsh;
-    private String cask;
+    private String img;
     
 
     public Long getId() {
@@ -84,59 +76,13 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public String getTitle() {
-        return title;
+    public String getImg() {
+        return img;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setImg(String img) {
+        this.img = img;
     }
 
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
     
-    public String getNose() {
-        return nose;
-    }
-
-    public void setNose(String nose) {
-        this.nose = nose;
-    }
-
-    public String getTaste() {
-        return taste;
-    }
-
-    public void setTaste(String taste) {
-        this.taste = taste;
-    }
-
-    public String getFinsh() {
-        return finsh;
-    }
-
-    public void setFinsh(String finsh) {
-        this.finsh = finsh;
-    }
-
-    public String getCask() {
-        return cask;
-    }
-
-    public void setCask(String cask) {
-        this.cask = cask;
-    }
 }
