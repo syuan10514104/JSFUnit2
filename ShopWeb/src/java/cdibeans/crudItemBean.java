@@ -10,9 +10,11 @@ import entityControl.ItemFacade;
 import entityControl.ProductFacade;
 import java.io.Serializable;
 import cdibeans.CrudBean;
+import static com.sun.codemodel.JExpr.ref;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -26,10 +28,12 @@ public class crudItemBean implements Serializable {
      @EJB
     private ItemFacade itemFacade;
     private ProductFacade productFacade;
-    private CrudBean crudBean;
     private Long productID;
     private Item item;
     private Item newItem;
+    
+    FacesContext facesContext = FacesContext.getCurrentInstance(); 
+    CrudBean crudBean = (CrudBean)facesContext.getApplication().createValueBinding("#{crudBean}").getValue(facesContext);
     
     public ItemFacade getItemFacade() {
         return itemFacade;
@@ -84,6 +88,7 @@ public class crudItemBean implements Serializable {
     }
     
     public String addItem(){
+        this.newItem.setProduct(crudBean.getProduct());
         itemFacade.create(newItem);
         return "index";
     }
