@@ -2,25 +2,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>購物車</title>
     </h:head>
     <h:body>
         <h1>購物車</h1>
-        <h:link outcome="checkout" value="結帳"></h:link><br/><br/>
-        <h:link outcome="index" value="回首頁"></h:link>
+        <h:form>
+            <table border="1" cellpadding="2" cellspacing="2">
+                <tr>
+                    <td>產品名稱</td>
+                    <td>數量</td>
+                    <td>金額</td>
+                    <td></td>
+                </tr>
+                <ui:repeat value="#{crudItemBean.findAllItem()}" var="item">
+                    <tr>
+                        <td align="center"><h:commandButton value="X" action="#{crudItemBean.delete(item)}"/></td>
+                        <td>#{item.product.name}</td>
+                        <td>#{item.quantity}</td>
+                        <td>#{item.product.price * item.quantity}</td>
+                    </tr>
+                </ui:repeat>
+                <tr>
+                    <td colspan="3" align="right">總金額</td>
+                    <td><h:outputText value="#{crudItemBean.total()}">
+                        <f:converter converterId="converters.PriceConverter"></f:converter>
+                        </h:outputText> </td>
+                </tr>
+            </table>
+        </h:form>
+        <br/>
+        <h:button outcome="index" value="回首頁"/> 
+        <h:button outcome="checkout" value="結帳"/>
+            
         
-        <h:dataTable value="#{crudItemBean.findAllItem()}" var="item">
-            <h:column>
-                <f:facet name="header">品項</f:facet>
-                #{item.product.name}
-            </h:column>
-            <h:column>
-                <f:facet name="header">數量</f:facet>
-                #{item.quantity}
-            </h:column>
-        </h:dataTable>
     </h:body>
 </html>
 

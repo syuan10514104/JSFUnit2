@@ -11,6 +11,7 @@ import entityControl.ProductFacade;
 import java.io.Serializable;
 import cdibeans.CrudBean;
 import static com.sun.codemodel.JExpr.ref;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -31,6 +32,23 @@ public class crudItemBean implements Serializable {
     private Long productID;
     private Item item;
     private Item newItem;
+    private Collection<Item> items;
+
+    public Collection<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Collection<Item> items) {
+        this.items = items;
+    }
+
+    public FacesContext getFacesContext() {
+        return facesContext;
+    }
+
+    public void setFacesContext(FacesContext facesContext) {
+        this.facesContext = facesContext;
+    }
     
     FacesContext facesContext = FacesContext.getCurrentInstance(); 
     CrudBean crudBean = (CrudBean)facesContext.getApplication().createValueBinding("#{crudBean}").getValue(facesContext);
@@ -94,7 +112,21 @@ public class crudItemBean implements Serializable {
     }
     
     public List<Item> findAllItem(){
+        this.items = itemFacade.findAll();
         return itemFacade.findAll();
+    }
+    
+    public String delete(Item item){
+        itemFacade.remove(item);
+        return "shopcart";
+    }
+    
+    public Integer total(){
+        Integer s = 0;
+        for(Item item : this.items){
+            s += item.getProduct().getPrice() * item.getQuantity();
+        }
+        return s;
     }
     
 }

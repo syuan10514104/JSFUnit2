@@ -13,13 +13,17 @@
     </h:head>
     <h:body>
         <h1>#{crudBean.product.name}</h1>
-        <p>價格:#{crudBean.product.price}</p>
-        <p>圖片:#{crudBean.product.img}</p>
+        <p>價格：<h:outputText value="#{crudBean.product.price}">
+            <f:converter converterId="converters.PriceConverter"></f:converter>
+            </h:outputText></p>
+        <p>圖片：#{crudBean.product.img}</p>
         <h:form>
-            <p>購買數量：<h:inputText value="#{crudItemBean.newItem.quantity}"/></p>
+            <p>購買數量：<h:inputText id="expired" validator="#{crudBean.nsufficientQuantity}" value="#{crudItemBean.newItem.quantity}"/><h:message for="expired" /></p>
             <h:commandButton value="確認" action="#{crudItemBean.addItem()}" />
         </h:form>
-        <h:link outcome="index" value="回首頁"></h:link>
+        
+        <br/>
+        <h:button outcome="index" value="回首頁"/>
     </h:body>
 </html>
 

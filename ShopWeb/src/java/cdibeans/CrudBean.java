@@ -12,6 +12,10 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  *
@@ -93,6 +97,14 @@ public class CrudBean implements Serializable {
     public String delete(){
         productFacade.remove(product);
         return "index";
+    }
+    
+    public void nsufficientQuantity(FacesContext context, 
+                    UIComponent component, 
+                    java.lang.Object value){
+        if((int)value <= 1 ){
+            throw new ValidatorException(new FacesMessage("購買數量不能小於1!"));
+        }
     }
     
 }

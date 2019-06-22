@@ -5,7 +5,7 @@
  */
 package converters;
 
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
+
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
