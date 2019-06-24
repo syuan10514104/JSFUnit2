@@ -2,36 +2,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>訂單管理</title>
     </h:head>
     <h:body>
+        <h:link outcome="index" ><h:graphicImage library="img" name="title.PNG"></h:graphicImage></h:link>
+        <p:breadCrumb>
+            <p:menuitem value="" outcome="index" />
+            <p:menuitem value="新增商品" outcome="createProduct" />
+            <p:menuitem value="購物車" outcome="shopcart" />
+            <p:menuitem value="購買紀錄" outcome="purchaseRecord" />
+            <p:menuitem value="訂單管理" outcome="order" />
+        </p:breadCrumb>
+        <br/>
         <h1>訂單管理</h1>
-        <h:dataTable value="#{crudOrderBean.findAllOrders()}" var="order">
-            <h:column>
+        <p:dataTable value="#{crudOrderBean.findAllOrders()}" var="order">
+            <p:column>
                 <f:facet name="header">購買時間</f:facet>
                 #{order.id}
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header">商品名稱</f:facet>
                 #{order.date1}
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header">金額</f:facet>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header">數量</f:facet>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header">訂單狀態</f:facet>
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header"></f:facet>
                 查看訂單明細
-            </h:column>
-        </h:dataTable>
-        <h:button outcome="index" value="回首頁"/>
+            </p:column>
+        </p:dataTable>
+        <p:button outcome="index" value="回首頁"/> 
     </h:body>
 </html>
 

@@ -94,7 +94,7 @@ public class CrudBean implements Serializable {
         return "productPage";
     }
     
-    public String delete(){
+    public String delete(Product product){
         productFacade.remove(product);
         return "index";
     }
@@ -102,8 +102,8 @@ public class CrudBean implements Serializable {
     public void nsufficientQuantity(FacesContext context, 
                     UIComponent component, 
                     java.lang.Object value){
-        if((int)value <= 1 ){
-            throw new ValidatorException(new FacesMessage("購買數量不能小於1!"));
+        if((int)value < 1 ){
+            throw new ValidatorException(new FacesMessage("此欄位數值不能小於1!"));
         }
     }
     

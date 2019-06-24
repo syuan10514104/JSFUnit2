@@ -3,41 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>購物車</title>
     </h:head>
     <h:body>
+        <h:link outcome="index" ><h:graphicImage library="img" name="title.PNG"></h:graphicImage></h:link>
+        <p:breadCrumb>
+            <p:menuitem value="" outcome="index" />
+            <p:menuitem value="新增商品" outcome="createProduct" />
+            <p:menuitem value="購物車" outcome="shopcart" />
+            <p:menuitem value="購買紀錄" outcome="purchaseRecord" />
+            <p:menuitem value="訂單管理" outcome="order" />
+        </p:breadCrumb>
+        <br/>
         <h1>購物車</h1>
         <h:form>
-            <table border="1" cellpadding="2" cellspacing="2">
-                <tr>
-                    <td>產品名稱</td>
-                    <td>數量</td>
-                    <td>金額</td>
-                    <td></td>
-                </tr>
-                <ui:repeat value="#{crudItemBean.findAllItem()}" var="item">
-                    <tr>
-                        <td align="center"><h:commandButton value="X" action="#{crudItemBean.delete(item)}"/></td>
-                        <td>#{item.product.name}</td>
-                        <td>#{item.quantity}</td>
-                        <td>#{item.product.price * item.quantity}</td>
-                    </tr>
-                </ui:repeat>
-                <tr>
-                    <td colspan="3" align="right">總金額</td>
-                    <td><h:outputText value="#{crudItemBean.total()}">
-                        <f:converter converterId="converters.PriceConverter"></f:converter>
-                        </h:outputText> </td>
-                </tr>
-            </table>
+            <p:dataTable  value="#{crudItemBean.findAllItem()}" var="item">
+                <p:column  headerText="產品名稱">
+                    <h:outputText value="#{item.product.name}" />
+                </p:column>
+                <p:column headerText="數量">
+                    <h:outputText value="#{item.quantity}" />
+                </p:column>
+                <p:column headerText="金額">
+                    <h:outputText value="#{item.product.price * item.quantity}" />
+                </p:column>
+                <p:column>
+                    <h:commandButton value="刪除" action="#{crudItemBean.delete(item)}"/>
+                </p:column>
+            </p:dataTable>
         </h:form>
+        <h2>總金額<h:outputText value="#{crudItemBean.total()}">
+                        <f:converter converterId="converters.PriceConverter"></f:converter>
+            </h:outputText></h2><hr/>
         <br/>
-        <h:button outcome="index" value="回首頁"/> 
-        <h:button outcome="checkout" value="結帳"/>
-            
-        
+        <p:button outcome="index" value="回首頁"/> 
+        <p:button outcome="checkout" value="結帳"/>
+        <br/><br/><br/><br/><br/><br/> 
     </h:body>
 </html>
 

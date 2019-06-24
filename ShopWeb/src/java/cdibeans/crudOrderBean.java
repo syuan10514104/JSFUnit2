@@ -7,6 +7,7 @@ package cdibeans;
 
 
 import entities.Orders;
+import entityControl.ItemFacade;
 import entityControl.OrdersFacade;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,17 @@ public class crudOrderBean implements Serializable {
 
     @EJB
     private OrdersFacade ordersFacade; 
+    
+    @EJB
+    private ItemFacade itemFacade;
+
+    public ItemFacade getItemFacade() {
+        return itemFacade;
+    }
+
+    public void setItemFacade(ItemFacade itemFacade) {
+        this.itemFacade = itemFacade;
+    }
     
     private Orders newOrders;
     

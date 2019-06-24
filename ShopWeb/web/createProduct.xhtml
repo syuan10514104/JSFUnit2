@@ -2,20 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>新增商品</title>
+        <title>新增商品</title><br/>
         <f:metadata>
             <f:viewAction action="#{crudBean.createProduct()}"></f:viewAction>
         </f:metadata>
     </h:head>
     <h:body>
-        <h1>新增商品</h1>
         <h:form>
-            <p>產品名稱： <h:inputText value="#{crudBean.newProduct.name}"/></p>
-            <p>價格： <h:inputText value="#{crudBean.newProduct.price}"/></p>
-            <p>圖片： <h:inputText value="#{crudBean.newProduct.img}"/></p>
-            <h:commandButton value="返回" action="index"/>
+        <h:link outcome="index" ><h:graphicImage library="img" name="title.PNG"></h:graphicImage></h:link>
+        <p:breadCrumb>
+            <p:menuitem value="" outcome="index" />
+            <p:menuitem value="新增商品" outcome="createProduct" />
+            <p:menuitem value="購物車" outcome="shopcart" />
+            <p:menuitem value="購買紀錄" outcome="purchaseRecord" />
+            <p:menuitem value="訂單管理" outcome="order" />
+        </p:breadCrumb>
+        <strong><h1>新增商品</h1></strong><hr/>
+        <p:growl id="growl" showDetail="true" sticky="true" />
+            <h3>
+            <p>產品名稱： <p:inputText value="#{crudBean.newProduct.name}" required="true"/></p>
+            <p>標題： <p:inputText value="#{crudBean.newProduct.title}" required="true"/></p>
+            <p>簡介： <p:inputText value="#{crudBean.newProduct.introduction}" required="true"/></p>
+            <p>色澤： <p:inputText value="#{crudBean.newProduct.colour}" required="true"/></p>
+            <p>嗅覺： <p:inputText value="#{crudBean.newProduct.nose}" required="true"/></p>
+            <p>口感： <p:inputText value="#{crudBean.newProduct.body}" required="true"/></p>
+            <p>餘韻： <p:inputText value="#{crudBean.newProduct.finish}" required="true"/></p>
+            <p>價格： <p:inputText value="#{crudBean.newProduct.price}" required="true" validator="#{crudBean.nsufficientQuantity}"/></p>
+            <p>圖片： <p:inputText value="#{crudBean.newProduct.img}" required="true"/></p>
+            </h3>
+            <hr/>
+            <h:button outcome="index" value="回首頁"/> 
             <h:commandButton value="新增" action="#{crudBean.addProduct()}" />
         </h:form>
     </h:body>

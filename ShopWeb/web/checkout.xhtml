@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>結帳</title>
         <f:metadata>
@@ -11,47 +12,58 @@
         </f:metadata>
     </h:head>
     <h:body>
-        <h1>結帳</h1>
-        <h2>基本資料</h2>
+        <h:link outcome="index" ><h:graphicImage library="img" name="title.PNG"></h:graphicImage></h:link>
+        <p:breadCrumb>
+            <p:menuitem value="" outcome="index" />
+            <p:menuitem value="新增商品" outcome="createProduct" />
+            <p:menuitem value="購物車" outcome="shopcart" />
+            <p:menuitem value="購買紀錄" outcome="purchaseRecord" />
+            <p:menuitem value="訂單管理" outcome="order" />
+        </p:breadCrumb>
+        <br/>
+        <strong><h1>結帳</h1><hr/>
+        <h2>基本資料</h2></strong>
         <h:form>
-            <p>姓名： <h:inputText value="#{crudOrderBean.newOrders.name}"/></p>
-            <p>地址： <h:inputText value="#{crudOrderBean.newOrders.address}"/></p>
-            <p>電話： <h:inputText value="#{crudOrderBean.newOrders.phone}"/></p>
-            <p>付款方式： <h:selectOneRadio value="#{crudOrderBean.newOrders.pay}">
+            <h3>
+            <p>姓名： <p:inputText value="#{crudOrderBean.newOrders.name}"/></p>
+            <p>地址： <p:inputText value="#{crudOrderBean.newOrders.address}"/></p>
+            <p>電話： <p:inputText value="#{crudOrderBean.newOrders.phone}"/></p>
+            <p>付款方式： <p:selectOneRadio value="#{crudOrderBean.newOrders.pay}">
                 <f:selectItem itemLabel="轉帳" itemValue="轉帳"/>
                 <f:selectItem itemLabel="取貨付款" itemValue="取貨付款"/>
-            </h:selectOneRadio></p>
-                <p>運送方式： <h:selectOneRadio value="#{crudOrderBean.newOrders.transport}">
+            </p:selectOneRadio></p>
+                <p>運送方式： <p:selectOneRadio value="#{crudOrderBean.newOrders.transport}">
                 <f:selectItem itemLabel="郵寄寄送" itemValue="郵寄寄送"/>
                 <f:selectItem itemLabel="7-11取貨" itemValue="7-11取貨"/>
-            </h:selectOneRadio></p>
-            <p>備註：<h:inputTextarea value="#{crudOrderBean.newOrders.note}"/></p>
-            <br/><br/>
-            <h2>購物車內容</h2>
-            <table border="1" cellpadding="2" cellspacing="2">
-                    <tr>
-                        <td>產品名稱</td>
-                        <td>數量</td>
-                        <td>金額</td>
-                    </tr>
-                    <ui:repeat value="#{crudItemBean.findAllItem()}" var="item">
-                        <tr>
-                            <td>#{item.product.name}</td>
-                            <td>#{item.quantity}</td>
-                            <td>#{item.quantity * item.product.price}</td>
-                        </tr>
-                    </ui:repeat>
-                    <tr>
-                        <td colspan="2" align="right">總金額</td>
-                        <td><h:outputText value="#{crudItemBean.total()}">
+            </p:selectOneRadio></p>
+            <p>備註：<p:inputTextarea value="#{crudOrderBean.newOrders.note}"/></p>
+            </h3>
+            <br/><hr/><br/>
+            <strong><h2>購物車內容</h2></strong>
+            <h:form>
+            <p:dataTable  value="#{crudItemBean.findAllItem()}" var="item">
+                <p:column  headerText="產品名稱">
+                    <h:outputText value="#{item.product.name}" />
+                </p:column>
+                <p:column headerText="數量">
+                    <h:outputText value="#{item.quantity}" />
+                </p:column>
+                <p:column headerText="金額">
+                    <h:outputText value="#{item.product.price * item.quantity}" />
+                </p:column>
+                <p:column>
+                    <h:commandButton value="刪除" action="#{crudItemBean.delete(item)}"/>
+                </p:column>
+            </p:dataTable>
+            </h:form>
+            <h2>總金額<h:outputText value="#{crudItemBean.total()}">
                         <f:converter converterId="converters.PriceConverter"></f:converter>
-                        </h:outputText> </td>
-                    </tr>
-            </table>
+            </h:outputText></h2><hr/>
             <br/>
-            <h:button outcome="index" value="返回"/>
-            <h:commandButton value="確認結帳" action="#{crudOrderBean.addOrder()}"/>
+            <p:button value="返回" outcome="shopcart"/>
+            <p:commandButton value="確認結帳" action="#{crudOrderBean.addOrder()}"/>
         </h:form>
+        <br/><br/><br/><br/><br/><br/> 
     </h:body>
 </html>
 

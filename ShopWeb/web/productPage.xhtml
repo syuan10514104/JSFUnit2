@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>產品頁面</title>
         <f:metadata>
@@ -11,19 +12,43 @@
             <f:viewAction action="#{crudItemBean.createItem()}"></f:viewAction>
         </f:metadata>
     </h:head>
-    <h:body>
-        <h1>#{crudBean.product.name}</h1>
-        <p>價格：<h:outputText value="#{crudBean.product.price}">
-            <f:converter converterId="converters.PriceConverter"></f:converter>
-            </h:outputText></p>
-        <p>圖片：#{crudBean.product.img}</p>
+    <h:body>        
         <h:form>
-            <p>購買數量：<h:inputText id="expired" validator="#{crudBean.nsufficientQuantity}" value="#{crudItemBean.newItem.quantity}"/><h:message for="expired" /></p>
+        <h:link outcome="index" ><h:graphicImage library="img" name="title.PNG"></h:graphicImage></h:link>
+        <p:breadCrumb>
+            <p:menuitem value="" outcome="index" />
+            <p:menuitem value="新增商品" outcome="createProduct" />
+            <p:menuitem value="購物車" outcome="shopcart" />
+            <p:menuitem value="購買紀錄" outcome="purchaseRecord" />
+            <p:menuitem value="訂單管理" outcome="order" />
+        </p:breadCrumb>
+        <br/><hr/>
+        <p:tab title="#{crudBean.product.name}">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:graphicImage width="300px" value="#{crudBean.product.img}"></h:graphicImage>
+                <strong>
+                <h1>#{crudBean.product.name}</h1>
+                <h1>品飲紀錄</h1>
+                <h2>色澤： #{crudBean.product.colour}</h2>
+                <h2>嗅覺： #{crudBean.product.nose}</h2>
+                <h2>口感： #{crudBean.product.body}</h2>
+                <h2>餘韻： #{crudBean.product.finish}</h2>
+                </strong>
+            </h:panelGrid>
+        </p:tab><hr/>
+        <br/>
+        <h2>價格： <h:outputText value="#{crudBean.product.price}">
+        <f:converter converterId="converters.PriceConverter"></f:converter>
+        </h:outputText></h2>
+        
+            <p:growl id="growl" showDetail="true" sticky="true" />
+            <h2>購買數量：
+                <p:inputText validator="#{crudBean.nsufficientQuantity}" 
+                                  value="#{crudItemBean.newItem.quantity}" required="true"/></h2>
+            <h:button outcome="index" value="回首頁"/>    
             <h:commandButton value="確認" action="#{crudItemBean.addItem()}" />
         </h:form>
-        
         <br/>
-        <h:button outcome="index" value="回首頁"/>
     </h:body>
 </html>
 
